@@ -67,14 +67,13 @@ public class InwardController {
 		return inwardService.saveInwardDeltails(inward);
 	}
 
-	//http://localhost:8080/Jersey-Spring-Hibernate/rest/inward/1
-	@PUT
-	@Path("/{inwardId}") 
+	//http://localhost:8080/Jersey-Spring-Hibernate/rest/inward/
+	@PUT 
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
 	@Consumes(MediaType.APPLICATION_JSON_VALUE)
-	public Response updateInward(@PathParam("inwardId") String inwardId,Inward inward) { 
+	public Response updateInward(Inward inward) { 
 		//inward.setCreationDate(CommonUtils.newDateTime().toString()); 
-		if(inwardService.updateInward(inwardId,inward)==null)
+		if(inwardService.updateInward(inward)==null)
 		{
 			return Response.status(Status.BAD_REQUEST).entity(inward.getInwardNo()).build();
 		}
